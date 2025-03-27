@@ -1,0 +1,204 @@
+﻿body {
+    overflow: hidden;
+    font-family: "Inter";
+    background: var(--blue-gray-50, #F8FAFC);
+}
+
+.bigtext-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    gap:15px;
+    position:relative;
+    bottom:-150px;
+}
+
+.bigtext {
+    color: var(--Base-02, #090914);
+    text-align: center;
+    /* Bold/52px */
+    font-family: Poppins;
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 62px; /* 119.231% */
+    letter-spacing: -2px;
+    width: 636px;
+    font-family: "Inter";
+}
+
+.smalltext {
+    width: 494px;
+    color: var(--gray-600, #52525B);
+    text-align: center;
+    /* Regular/18px */
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px; /* 166.667% */
+    font-family: "Inter";
+}
+
+.card {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    width: 533px;
+    height: 484px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: var(--base-white, #FFF);
+    box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.06), 0px 10px 15px 0px rgba(0, 0, 0, 0.03);
+    position:relative;
+    bottom:-30px;
+}
+
+.input-container {
+    width: 300px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    gap: 15px;
+    position:relative;
+    bottom:30px;
+}
+
+.input-field {
+    width: 473px;
+    height: 63px;
+    flex-shrink: 0;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+    .input-field::placeholder {
+        color: #888;
+        font-weight: 500;
+    }
+
+.options-container {
+    width: 462px;
+    display: flex;
+    justify-content: space-between;
+    gap:100px;
+    align-items: center;
+    font-size: 14px;
+    position:relative;
+    bottom:5px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.forgot-password {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+}
+
+    .forgot-password:hover {
+        color: #000;
+    }
+
+
+.buttons-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:20px;
+    position:relative;
+    bottom:-25px;
+}
+
+#login-button {
+    display: flex;
+    width: 472px;
+    height: 65px;
+    padding: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: var(--blue-600, #2563EB);
+    color: var(--base-white, #FFF);
+    text-align: center;
+    /* Bold/16px */
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px; /* 175% */
+    letter-spacing: -0.2px;
+    font-family: "Inter";
+}
+
+#register-button {
+    display: flex;
+    width: 472px;
+    height: 65px;
+    padding: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border-radius: 10px;
+    background: #F1F1F1;
+    color: var(--blue-gray-800, #1E293B);
+    /* Bold/16px */
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px; /* 175% */
+    letter-spacing: -0.2px;
+    font-family: "Inter";
+}
+
+.bottom-texts{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:row;
+    gap:10px;
+    position:relative;
+    bottom:-45px;
+
+}
+
+.donthave-account {
+    color: var(--gray-500, #71717A);
+    text-align: center;
+    /* Regular/13px */
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 157.143% 
+    /* Bold/13px */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.signup {
+    color: var(--blue-600, #2563EB);
+    font-weight: bold;
+
+}

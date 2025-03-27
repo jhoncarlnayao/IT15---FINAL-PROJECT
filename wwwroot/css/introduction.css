@@ -1,0 +1,142 @@
+﻿body {
+    background-color: white;
+    font-family: "Inter";
+    background: var(--blue-gray-50, #F8FAFC);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: white
+}
+
+/* Left section (logo + title) */
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.navbar-title {
+    font-weight: bold;
+    color: black;
+    font-family: "Inter";
+}
+
+/* Center section (Navigation links) */
+.navbar-links {
+    display: flex;
+    gap: 40px;
+    font-family: "Inter";
+}
+
+    .navbar-links a {
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+        font-family: "Inter";
+    }
+
+/* Right section (Login Button) */
+.login-btn {
+    padding: 8px 15px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: "Inter";
+}
+
+    .login-btn:hover {
+        background-color: black;
+        color: white
+    }
+
+
+.bigtext-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45pc;
+    flex-direction:column;
+    gap:25px
+}
+.bigtext {
+    width: 650px;
+    height: 191.606px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--Blue-900, #0F172A);
+    text-align: center;
+    /* Bold/80px */
+    font-family: Inter;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 86px; /* 107.5% */
+    letter-spacing: -4px;
+}
+
+.smalltext {
+    width: 721px;
+    height: 113px;
+    flex-shrink: 0;
+    color: var(--Blue-800, #212939);
+    text-align: center;
+    /* Regular/21px */
+    font-family: Inter;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px; /* 161.905% */
+}
+
+.signup-button {
+    display: flex;
+    width: 340px;
+    height: 60px;
+    padding: 16px 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--Primary-01, #485AFF);
+    color: #FFF;
+    text-align: center;
+    /* Semi-bold/18px */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px; /* 155.556% */
+    margin-top:2pc;
+    transition: all ease-in-out 0.3s;
+}
+
+.signup-button:hover{
+    transform:scale(1.1)
+}

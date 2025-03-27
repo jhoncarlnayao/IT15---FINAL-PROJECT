@@ -1,0 +1,14 @@
+# Ignore Visual Studio and build files
+.vs/
+bin/
+obj/
+
+# Ignore Node modules
+node_modules/
+
+# Ignore Tailwind and PostCSS cache
+.postcss-cache/
+
+# Ignore environment files
+appsettings.json
+appsettings.Development.json
