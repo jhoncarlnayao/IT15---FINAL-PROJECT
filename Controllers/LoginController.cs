@@ -1,16 +1,17 @@
-﻿using IT15_FINALPROJECT.Models;
+﻿using IT15_FINALPROJECT.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Diagnostics;
 
 namespace IT15_FINALPROJECT.Controllers
 {
-    public class loginController : Controller
+    public class LoginController : Controller
     {
-        private readonly ILogger<loginController> _logger;
+        private readonly TenantContext _context;
 
-        public loginController(ILogger<loginController> logger)
+        public LoginController(TenantContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Introduction()
@@ -23,10 +24,40 @@ namespace IT15_FINALPROJECT.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        [HttpPost]
+        public IActionResult Login(Tenant tenant)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var user = _context.Tenants.FirstOrDefault(t => t.Email == tenant.Email && t.Password == tenant.Password);
+
+            if (user != null)
+            {
+                TempData["SuccessMessage"] = "Login successful! Redirecting...";
+                return RedirectToAction("Dashboard", "Home"); // Redirect to your dashboard or home page
+            }
+
+            ViewBag.Error = "Invalid email or password.";
+            return View();
+        }
+
+
+        public IActionResult Register()
+        {
+            return View(new Tenant()); // Pass an empty Tenant model
+        }
+
+        [HttpPost]
+        public IActionResult Register(Tenant tenant)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Tenants.Add(tenant);
+                _context.SaveChanges();
+                TempData["SuccessMessage"] = "Registration successful!";
+                return RedirectToAction("Register");
+            }
+
+            return View(tenant);
         }
     }
 }

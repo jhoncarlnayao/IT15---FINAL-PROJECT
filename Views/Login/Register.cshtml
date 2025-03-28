@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IT15_FINALPROJECT.Model.Tenant
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/output.css" rel="stylesheet">
+    <link href="~/css/register.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+
+
+    <div class="bigtext-container">
+        <h1 class="bigtext">Create Free Accountt</h1>
+        <p class="smalltext">Clarity gives you the blocks and components you need to create a truly professional website.</p>
+
+          @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+        }
+
+          <form asp-action="Register" asp-controller="Login" method="post">
+        <div class="card">
+            <div class="input-container">
+                <input type="email" class="input-field" placeholder="Email" name="email">
+                <input type="password" class="input-field" placeholder="Password" name="password">
+                <input type="text" class="input-field" placeholder="Firstname" name="firstname">
+                <input type="text" class="input-field" placeholder="Lastname" name="lastname">
+                <input type="text" class="input-field" placeholder="Phonenumber" name="phonenumber">
+            </div>
+
+            <div class="options-container">
+                <label class="remember-me">
+                    <input type="checkbox" required>
+                   I agree with the Terms & Conditions of Clarity
+                </label>
+               
+            </div>
+
+            <div class="buttons-container">
+                <button id="login-button" class="login-button" type="submit">Sign up</button
+            </div>
+
+            <div class="bottom-texts">
+                <p class="donthave-account">Already have an account?</p>
+                <p class="signup" onclick="window.location.href='@Url.Action("Login", "Login")'">Sign in</p>
+            </div>
+
+        </div>
+         </form>
+    </div>
+
+
+
+
+
+</body>
+</html>

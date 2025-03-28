@@ -4,14 +4,14 @@
     background: var(--blue-gray-50, #F8FAFC);
 }
 
-.bigtext-container{
+.bigtext-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction:column;
-    gap:15px;
-    position:relative;
-    bottom:-150px;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    bottom: -110px;
 }
 
 .bigtext {
@@ -19,13 +19,15 @@
     text-align: center;
     /* Bold/52px */
     font-family: Poppins;
-    font-size: 52px;
+    font-size: 65px;
     font-style: normal;
     font-weight: 600;
     line-height: 62px; /* 119.231% */
     letter-spacing: -2px;
-    width: 636px;
+    width: 700px;
     font-family: "Inter";
+    position:relative;
+    bottom:30px
 }
 
 .smalltext {
@@ -39,33 +41,34 @@
     font-weight: 400;
     line-height: 30px; /* 166.667% */
     font-family: "Inter";
+    position: relative;
+    bottom: 30px
 }
 
 .card {
     display: flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 533px;
-    height: 484px;
+    height: 630px;
     flex-shrink: 0;
     border-radius: 20px;
     background: var(--base-white, #FFF);
     box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.06), 0px 10px 15px 0px rgba(0, 0, 0, 0.03);
-    position:relative;
-    bottom:-30px;
+    position: relative;
+    bottom: 5px;
 }
 
 .input-container {
     width: 300px;
     display: flex;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     gap: 15px;
-    position:relative;
-    bottom:30px;
-    
+    position: relative;
+    bottom: 30px;
 }
 
 .input-field {
@@ -77,8 +80,6 @@
     border-radius: 8px;
     font-size: 16px;
     outline: none;
-    position:relative;
-    left:85px;
 }
 
     .input-field::placeholder {
@@ -90,11 +91,11 @@
     width: 462px;
     display: flex;
     justify-content: space-between;
-    gap:100px;
+    gap: 100px;
     align-items: center;
     font-size: 14px;
-    position:relative;
-    bottom:5px;
+    position: relative;
+    bottom: 5px;
 }
 
 .remember-me {
@@ -114,14 +115,14 @@
     }
 
 
-.buttons-container{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    gap:20px;
-    position:relative;
-    bottom:-25px;
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    bottom: -25px;
 }
 
 #login-button {
@@ -172,15 +173,14 @@
     font-family: "Inter";
 }
 
-.bottom-texts{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:row;
-    gap:10px;
-    position:relative;
-    bottom:-45px;
-
+.bottom-texts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    position: relative;
+    bottom:5px;
 }
 
 .donthave-account {
@@ -203,5 +203,5 @@
 .signup {
     color: var(--blue-600, #2563EB);
     font-weight: bold;
-
+    cursor:pointer;
 }

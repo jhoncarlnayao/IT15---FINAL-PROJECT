@@ -1,7 +1,18 @@
+﻿
+using IT15_FINALPROJECT.Model;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<TenantContext>(options =>
+{
+    options.UseMySql("server=127.0.0.1;database=IT15FINAL;user=root;password=;",
+        new MySqlServerVersion(new Version(10, 4, 32)) 
+    );
+});
 
 var app = builder.Build();
 

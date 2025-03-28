@@ -1,5 +1,5 @@
-﻿
-@model IT15_FINALPROJECT.Views.Login.LoginModel
+﻿﻿
+@model IT15_FINALPROJECT.Model.Tenant
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -21,12 +21,19 @@
         <h1 class="bigtext">Sign in to your account</h1>
         <p class="smalltext">Clarity gives you the blocks and components you need to create a truly professional website.</p>
         
-        <div class="card">
-            <div class="input-container">
-                <input type="email" class="input-field" placeholder="Email">
-                <input type="password" class="input-field" placeholder="Password">
-            </div>
+      <div class="card">
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+            {
+                <div class="input-container">
+                    <input type="email" class="input-field" placeholder="Email" name="Email" required>
+                    <input type="password" class="input-field" placeholder="Password" name="Password" required>
+                </div>
 
+                @if (ViewBag.Error != null)
+                {
+                    <p style="color: red;">@ViewBag.Error</p>
+                }
+            
             <div class="options-container">
                 <label class="remember-me">
                     <input type="checkbox">
@@ -36,10 +43,10 @@
             </div>
 
             <div class="buttons-container">
-                <button id="login-button" class="login-button">Sign in</button>
+                <button id="login-button" class="login-button" type="submit">Sign in</button>
                 <button id="register-button" class="register-button">Register</button>
             </div>
-            
+            }
             <div class="bottom-texts">
                 <p class="donthave-account">Don't have an account?</p>
                 <p class="signup">Sign up</p>
