@@ -1,16 +1,29 @@
-﻿
-using IT15_FINALPROJECT.Model;
+﻿using IT15_FINALPROJECT.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder; // Optional, for clarity
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// ✅ Add Session support
+builder.Services.AddSession();
+
+// ✅ Make TempData use Session (optional but recommended)
+builder.Services.AddSingleton<Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataProvider, Microsoft.AspNetCore.Mvc.ViewFeatures.SessionStateTempDataProvider>();
+
 builder.Services.AddDbContext<TenantContext>(options =>
 {
     options.UseMySql("server=127.0.0.1;database=IT15FINAL;user=root;password=;",
-        new MySqlServerVersion(new Version(10, 4, 32)) 
+        new MySqlServerVersion(new Version(10, 4, 32))
+    );
+});
+
+builder.Services.AddDbContext<AdminContext>(options =>
+{
+    options.UseMySql("server=127.0.0.1;database=IT15FINAL;user=root;password=;",
+        new MySqlServerVersion(new Version(10, 4, 32))
     );
 });
 
@@ -20,7 +33,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -28,7 +40,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseStaticFiles();
+
+// ✅ Add this before Authorization
+app.UseSession();
 
 app.UseAuthorization();
 

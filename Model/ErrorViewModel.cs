@@ -1,4 +1,5 @@
 namespace IT15_FINALPROJECT.Models
+
 {
     public class ErrorViewModel
     {
