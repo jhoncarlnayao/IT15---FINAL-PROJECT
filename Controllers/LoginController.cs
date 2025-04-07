@@ -1,4 +1,5 @@
 ﻿using IT15_FINALPROJECT.Model;
+using IT15_FINALPROJECT.Services; // 👈 make sure this points to where ApplicationDBContext is
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -6,17 +7,12 @@ namespace IT15_FINALPROJECT.Controllers
 {
     public class LoginController : Controller
     {
-        
+        private readonly ApplicationDBContext _context;
 
-        private readonly TenantContext _tenantContext;
-        private readonly AdminContext _adminContext;
-
-        public LoginController(TenantContext tenantContext, AdminContext adminContext)
+        public LoginController(ApplicationDBContext context)
         {
-            _tenantContext = tenantContext;
-            _adminContext = adminContext;
+            _context = context;
         }
-
 
         public IActionResult Introduction()
         {
@@ -36,26 +32,22 @@ namespace IT15_FINALPROJECT.Controllers
         [HttpPost]
         public IActionResult Login(Tenant loginData)
         {
-            var admin = _adminContext.AdminAccount
+            var admin = _context.AdminAccount
                 .FirstOrDefault(a => a.Email == loginData.Email && a.Password == loginData.Password);
 
             if (admin != null)
             {
-                // Generate a 4-digit verification code
                 var verificationCode = new Random().Next(1000, 9999).ToString();
                 TempData["AdminEmail"] = admin.Email;
                 TempData["VerificationCode"] = verificationCode;
                 TempData["ShowPopup"] = "True";
 
-
-                // Send email
                 SendVerificationEmail(admin.Email, verificationCode);
 
-                // Redirect to the same login page to trigger the popup
                 return RedirectToAction("Login");
             }
 
-            var tenant = _tenantContext.Tenants
+            var tenant = _context.Tenants
                 .FirstOrDefault(t => t.Email == loginData.Email && t.Password == loginData.Password);
 
             if (tenant != null)
@@ -68,12 +60,11 @@ namespace IT15_FINALPROJECT.Controllers
             return View();
         }
 
-
         private void SendVerificationEmail(string toEmail, string code)
         {
             var fromAddress = new System.Net.Mail.MailAddress("jhoncarlnayaoxx@gmail.com", "Your System");
             var toAddress = new System.Net.Mail.MailAddress(toEmail);
-            const string fromPassword = "eprj upyb ykuv bjzp"; // Use app password for Gmail
+            const string fromPassword = "eprj upyb ykuv bjzp";
             const string subject = "Your Verification Code";
             string body = $"Your verification code is: {code}";
 
@@ -97,7 +88,6 @@ namespace IT15_FINALPROJECT.Controllers
             }
         }
 
-
         public IActionResult Register()
         {
             return View(new Tenant());
@@ -108,8 +98,8 @@ namespace IT15_FINALPROJECT.Controllers
         {
             if (ModelState.IsValid)
             {
-                _tenantContext.Tenants.Add(tenant);
-                _tenantContext.SaveChanges();
+                _context.Tenants.Add(tenant);
+                _context.SaveChanges();
                 TempData["SuccessMessage"] = "Registration successful!";
                 return RedirectToAction("Register");
             }

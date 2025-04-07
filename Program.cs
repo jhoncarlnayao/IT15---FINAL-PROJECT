@@ -1,6 +1,8 @@
 ﻿using IT15_FINALPROJECT.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder; // Optional, for clarity
+using IT15_FINALPROJECT.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,18 +15,9 @@ builder.Services.AddSession();
 // ✅ Make TempData use Session (optional but recommended)
 builder.Services.AddSingleton<Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataProvider, Microsoft.AspNetCore.Mvc.ViewFeatures.SessionStateTempDataProvider>();
 
-builder.Services.AddDbContext<TenantContext>(options =>
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
 {
-    options.UseMySql("server=127.0.0.1;database=IT15FINAL;user=root;password=;",
-        new MySqlServerVersion(new Version(10, 4, 32))
-    );
-});
-
-builder.Services.AddDbContext<AdminContext>(options =>
-{
-    options.UseMySql("server=127.0.0.1;database=IT15FINAL;user=root;password=;",
-        new MySqlServerVersion(new Version(10, 4, 32))
-    );
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 var app = builder.Build();
