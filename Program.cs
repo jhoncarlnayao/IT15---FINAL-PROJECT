@@ -12,7 +12,7 @@ builder.Services.AddControllersWithViews();
 // ✅ Add Session support
 builder.Services.AddSession();
 
-// ✅ Make TempData use Session (optional but recommended)
+
 builder.Services.AddSingleton<Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataProvider, Microsoft.AspNetCore.Mvc.ViewFeatures.SessionStateTempDataProvider>();
 
 builder.Services.AddDbContext<ApplicationDBContext>(options =>

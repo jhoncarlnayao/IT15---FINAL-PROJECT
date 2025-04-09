@@ -1,5 +1,5 @@
 ﻿using IT15_FINALPROJECT.Model;
-using IT15_FINALPROJECT.Services; // 👈 make sure this points to where ApplicationDBContext is
+using IT15_FINALPROJECT.Services; 
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -28,6 +28,8 @@ namespace IT15_FINALPROJECT.Controllers
         {
             return View();
         }
+
+      
 
         [HttpPost]
         public IActionResult Login(Tenant loginData)
