@@ -16,6 +16,18 @@ namespace IT15_FINALPROJECT.Controllers
 
         public IActionResult TenantDashboard()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("TenantEmail")))
+            {
+              
+                return RedirectToAction("Login", "Login");
+            }
+
+         
+            return View();
+        }
+
+        public IActionResult TenantDashboard2()
+        {
             return View();
         }
 

@@ -1,6 +1,7 @@
 ﻿using IT15_FINALPROJECT.Model;
 using IT15_FINALPROJECT.Services; 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using System.Linq;
 
 namespace IT15_FINALPROJECT.Controllers
@@ -54,8 +55,11 @@ namespace IT15_FINALPROJECT.Controllers
 
             if (tenant != null)
             {
+               
+                HttpContext.Session.SetString("TenantEmail", tenant.Email);
+
                 TempData["SuccessMessage"] = "Tenant login successful!";
-                return RedirectToAction("Dashboard", "Home");
+                return RedirectToAction("TenantDashboard", "TenantDashboard");
             }
 
             ViewBag.Error = "Invalid email or password.";
