@@ -77,7 +77,14 @@
 <div class="offcanvas offcanvas-end custom-offcanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
   <div class="offcanvas-body d-flex justify-content-between gap-3" id="userProfile">
     <div class="side-card">
-      <!-- Left content here -->
+      <div class="user-profile">
+          <!--USER PROFILE HERE-->
+      </div>
+      <h1 class="profile-firstname">First name</h1>
+         <h1 class="profile-middlename">Middle name</h1>
+            <h1 class="profile-lastname">Last Name</h1>
+               <h1 class="profile-email">Email</h1>
+                   <h1 class="profile-phonenumbr">Phone number</h1>
     </div>
     <div id="profile-sidecard">
       <!-- Right content here -->
@@ -159,8 +166,15 @@
     </div>
 </div>
 <div class="tips-card">
-    <img src="~/images/tips.png" class="img-fluid tips-image" alt="...">
+    <div id="tips-content" class="tips-content">
+        <img id="tips-image" src="~/images/tips.png" class="img-fluid tips-image" alt="...">
+        <h1 id="tips-title" class="tips-card-title">Lorem ipsum</h1>
+        <p id="tips-text" class="tips-card-text">
+            It is a long established fact that a reader will be distracted by the readable content...
+        </p>
+    </div>
 </div>
+
 
 </div>
 </div>
@@ -191,6 +205,50 @@
   myModal.addEventListener('shown.bs.modal', () => {
     myInput.focus();
   });
+
+
+
+
+const tips = [
+    {
+        image: "/images/tips.png",
+        title: "Lorem Ipsum 1",
+        text: "This is the first tip content."
+    },
+    {
+        image: "/images/tips2.png",
+        title: "Lorem Ipsum 2",
+        text: "This is the second tip content, with a different message."
+    },
+    {
+        image: "/images/tips3.png",
+        title: "Lorem Ipsum 3",
+        text: "Another helpful tip goes here for the user to read."
+    }
+];
+
+
+    let currentTip = 0;
+    const content = document.getElementById('tips-content');
+    const img = document.getElementById('tips-image');
+    const title = document.getElementById('tips-title');
+    const text = document.getElementById('tips-text');
+
+    function changeTip() {
+        content.classList.add('fade-out');
+
+        setTimeout(() => {
+            currentTip = (currentTip + 1) % tips.length;
+            img.src = tips[currentTip].image;
+            title.textContent = tips[currentTip].title;
+            text.textContent = tips[currentTip].text;
+
+            content.classList.remove('fade-out');
+        }, 3000); // Wait 3s for fade-out before changing content
+    }
+
+    // Start rotating tips every 6 seconds
+    setInterval(changeTip, 6000);
 </script>
 
 
